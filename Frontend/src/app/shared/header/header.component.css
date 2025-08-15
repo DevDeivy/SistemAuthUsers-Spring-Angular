@@ -1,0 +1,10 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    padding: 1rem 2rem;
+    
+    a{
+        color: black;
+    }
+}

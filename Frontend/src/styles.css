@@ -1,0 +1,29 @@
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 16px;
+}
+
+button{
+    cursor: pointer;
+}
+
+a{
+    color: crimson;
+    text-decoration: none;
+}
+
+input{
+    accent-color: crimson;
+    outline: none;
+    border: none;
+}

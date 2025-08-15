@@ -1,0 +1,16 @@
+    <div class="wrapper-form">
+        <form class="form" [formGroup]="register" (ngSubmit)="registerUserNew()">
+            <h2>Register</h2>
+            <input class="input" type="email" formControlName="email" placeholder="Email" required>
+            <input class="input" type="text" formControlName="name" placeholder="Name" required>
+            <input class="input" type="text" formControlName="lastname" placeholder="Last Name" required>
+            <input class="input" type="password" formControlName="password" placeholder="Password">
+            <input class="input" type="password" formControlName="confirm" placeholder="Password">
+            <p>your password must be have 'aB#0'</p>
+            <button type="submit" [disabled]="!register.valid || confirmPassword()" class="log" >Sign Up</button>
+            <div class="selection">
+                <p>Already have an account?</p>
+            <a [routerLink]="['/auth/login']">Login</a>
+        </div>
+    </form>
+</div>

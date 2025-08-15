@@ -1,0 +1,29 @@
+    <div class="wrapper-form">
+    <form class="form" [formGroup]="login">
+        <h2>Login</h2>
+        <input type="email" formControlName="email" placeholder="Email" required class="input">
+        <input type="password" formControlName="password" placeholder="Password" class="input">
+        <div class="gap">
+            <div class="check">
+                <input type="checkbox">
+                <p>Remember me</p>
+            </div>
+            <div class="forgot">
+                <a [routerLink]="['/auth/forgot']">Forgot password?</a>
+            </div>
+        </div>
+        <button type="submit" [disabled]="!login.valid" class="log">Sign In</button>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <div class="selection">
+            <p>You don't have an account?</p>
+            <a [routerLink]="['/auth/register']">Register</a>
+        </div>
+        <div class="line"></div>
+        <div class="icons">
+            <button><a><i class="fa-brands fa-google"></i></a></button>
+            <button><a><i class="fa-brands fa-apple"></i></a></button>
+            <button><a><i class="fa-brands fa-square-facebook"></i></a></button>
+            <button><a><i class="fa-brands fa-x-twitter"></i></a></button>
+        </div>
+    </form>
+    </div>

@@ -1,0 +1,79 @@
+.wrapper-form{
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    height: 95vh;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    height: 50rem;
+    width: 50rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+}
+
+.input{
+    width: 90%;
+    padding: 1rem;
+}
+
+.gap{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.check{
+    display: flex;
+    gap: .5rem;
+}
+
+.log{
+    width: 70%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+
+button[disabled]{
+    background-color: #ccc;
+    cursor: auto;
+}
+
+.selection{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.line{
+    width: 92%;
+    background-color: #ccc;
+    height: .1rem;
+}
+
+.icons{
+    display: flex;
+    gap: 3rem;
+    
+    a{
+        color: black;
+    }
+    
+    :hover{
+        background-color: #ccc;
+    }
+}
+
+.icons button{
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border: none;
+    background-color: #bbb;
+}
