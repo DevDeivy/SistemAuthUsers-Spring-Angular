@@ -1,9 +1,14 @@
 package com.example.authentication.api.controllers;
 
+import com.example.authentication.api.dto.LoginDTO;
+import com.example.authentication.api.dto.ResponseTokenDTO;
 import com.example.authentication.api.dto.UserDTO;
+import com.example.authentication.application.services.AuthenticationService;
+import com.example.authentication.application.services.AuthenticationTokenService;
 import com.example.authentication.application.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
+    private final AuthenticationTokenService authenticationTokenService;
+    private final AuthenticationService authenticationService;
 
     @GetMapping("/users")
     public ResponseEntity<Object> getUsers(){
@@ -24,19 +31,13 @@ public class UserController {
         return userService.createUser(userDTO);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable Long id){
-        userService.deleteUser(id);
-        return ResponseEntity.ok("User deleted sucessfully");
+    @PostMapping("/login")
+    public ResponseEntity<Object> loginUser(@RequestBody @Valid LoginDTO loginDTO){
+        return ResponseEntity.ok(authenticationService.loginUser(loginDTO));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> getUserById(@PathVariable Long id){
-        return userService.getUserById(id);
-    }
-
-    @PutMapping("/update")
-    public ResponseEntity<Object> updateUser(@RequestBody @Valid UserDTO userDTO){
-        return userService.updateUser(userDTO);
+    @PostMapping("/refreshToken")
+    public ResponseEntity<Object> refreshToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader){
+        return authenticationTokenService.refreshToken(authHeader);
     }
 }

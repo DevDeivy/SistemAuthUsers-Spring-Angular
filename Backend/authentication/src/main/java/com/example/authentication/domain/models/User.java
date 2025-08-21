@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name="tbl_users")
 @AllArgsConstructor
-public class User  implements UserDetails {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,6 +32,9 @@ public class User  implements UserDetails {
     @Column(nullable = false, name = "password")
     private String password;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<RefreshToken> tokens;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
@@ -39,26 +42,26 @@ public class User  implements UserDetails {
 
     @Override
     public String getUsername() {
-        return "";
+        return email;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true;
     }
 }
