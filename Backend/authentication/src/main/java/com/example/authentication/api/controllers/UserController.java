@@ -1,7 +1,6 @@
 package com.example.authentication.api.controllers;
 
 import com.example.authentication.api.dto.LoginDTO;
-import com.example.authentication.api.dto.ResponseTokenDTO;
 import com.example.authentication.api.dto.UserDTO;
 import com.example.authentication.application.services.AuthenticationService;
 import com.example.authentication.application.services.AuthenticationTokenService;

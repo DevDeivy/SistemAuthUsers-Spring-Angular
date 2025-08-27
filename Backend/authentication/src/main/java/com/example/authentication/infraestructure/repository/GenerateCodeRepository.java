@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GenerateCodeRespository extends JpaRepository<GenerateCode, Integer> {
-    Boolean existsByEmail(String email);
-    Boolean existsByCode(String code);
+public interface GenerateCodeRepository extends JpaRepository<GenerateCode, Integer> {
+    boolean existsByEmail(String email);
+    boolean existsByCode(String code);
 }

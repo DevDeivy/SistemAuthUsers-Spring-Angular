@@ -25,7 +25,7 @@ public class AuthenticationTokenService {
 
     private final UserRepository userRepository;
     private final RefreshTokenRepository refreshTokenRepository;
-    private static final String _SecretKey = "{{YOUR_SECRET_KEY}}";
+    private static final String SECRET_KEY = "thisismytokensecretkatorcecuarentaycuatromilochojentospejosjajaja";
 
    public String getTokenWithoutClaims(UserDetails userDetails){
        return getTokenWithClaims(new HashMap<>(), userDetails);
@@ -43,7 +43,7 @@ public class AuthenticationTokenService {
    }
 
    private Key key(){
-       return Keys.hmacShaKeyFor(_SecretKey.getBytes());
+       return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
    }
 
     public ResponseEntity<Object> refreshToken(String authHeader) {

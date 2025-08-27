@@ -1,6 +1,6 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.5.4"
+	id("org.springframework.boot") version "3.5.5"
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -19,12 +19,8 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-mail")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	compileOnly("org.projectlombok:lombok")
-	annotationProcessor("org.projectlombok:lombok")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation ("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+
 }
 
 tasks.withType<Test> {

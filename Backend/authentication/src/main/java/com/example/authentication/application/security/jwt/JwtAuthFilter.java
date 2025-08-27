@@ -1,15 +1,11 @@
 package com.example.authentication.application.security.jwt;
 
-import com.example.authentication.api.dto.UserDTO;
 import com.example.authentication.application.services.AuthenticationTokenService;
-import com.example.authentication.domain.models.User;
-import com.example.authentication.infraestructure.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.antlr.v4.runtime.Token;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,7 +26,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
 
         if (request.getServletPath().contains("/auth")){
             filterChain.doFilter(request, response);
@@ -51,11 +49,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         //ahora buscar el token refresh en la DB
 
+
         UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
         boolean isTokenValid = authenticationTokenService.isTokenvalid(jwtToken, userDetails);
 
         if (isTokenValid){
-
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 userDetails,
                 null,

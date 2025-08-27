@@ -3,10 +3,12 @@ package com.example.authentication.domain.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "tbl_refreshToken")
 @Data
-public class RefreshToken {
+public class RefreshToken implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

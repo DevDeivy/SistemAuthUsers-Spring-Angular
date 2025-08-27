@@ -2,7 +2,7 @@ package com.example.authentication.application.services;
 
 import com.example.authentication.api.dto.GenerateCodeDTO;
 import com.example.authentication.domain.models.GenerateCode;
-import com.example.authentication.infraestructure.repository.GenerateCodeRespository;
+import com.example.authentication.infraestructure.repository.GenerateCodeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class GenerateCodeService {
 
-    private final GenerateCodeRespository generateCodeRespository;
+    private final GenerateCodeRepository generateCodeRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public String generatedCode(){
@@ -28,9 +28,9 @@ public class GenerateCodeService {
         String codeHashed = bCryptPasswordEncoder.encode(codeString);
         GenerateCode generateCode = new GenerateCode();
 
-        if (!generateCodeRespository.existsByEmail(generateCodeDTO.getEmail())){
+        if (!generateCodeRepository.existsByEmail(generateCodeDTO.getEmail())){
             return "this email are not available";
-        } else if (generateCodeRespository.existsByCode(generateCode.getCode())) {
+        } else if (generateCodeRepository.existsByCode(generateCode.getCode())) {
             return "this email have a code currently";
         }
 
@@ -38,14 +38,14 @@ public class GenerateCodeService {
         generateCode.setCode(codeHashed);
         generateCode.setExpiration(LocalDateTime.now().plusMinutes(5));
 
-        generateCodeRespository.save(generateCode);
+        generateCodeRepository.save(generateCode);
         return "Email sended";
     }
 
+    /*
     public boolean validateCode(String userEmail, String code){
         return false;
-    }
-
+    }*/
 
 }
 
