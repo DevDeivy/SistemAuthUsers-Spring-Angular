@@ -24,12 +24,12 @@ dependencies {
 	implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
 	implementation ("org.springframework.boot:spring-boot-starter-security")
 	implementation ("org.springframework.security:spring-security-crypto")
-	implementation("io.jsonwebtoken:jjwt-api:0.11.5")
 	implementation("com.fasterxml.jackson.core:jackson-annotations:2.19.2")
 	implementation("com.fasterxml.jackson.core:jackson-core:2.19.2")
 	implementation("com.fasterxml.jackson.core:jackson-databind:2.19.2")
 
 	implementation ("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+	implementation("io.jsonwebtoken:jjwt-api:0.11.5")
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
 
